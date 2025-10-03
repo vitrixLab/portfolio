@@ -75,17 +75,13 @@ const Home = () => {
         </nav>
       </header>
 
-      {/* Hero Section with Fluid Gradient Background */}
+      {/* Hero Section with Tensor-Based Fluid Dynamics Background */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        {/* Animated Gradient Canvas */}
-        <canvas 
-          ref={canvasRef}
-          className="absolute top-0 left-0 w-full h-full z-0"
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
-        />
+        {/* AI-Powered Fluid Dynamics Background */}
+        <FluidBackground />
         
         {/* Hero Content */}
-        <div className={`relative z-10 max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`relative z-20 max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="text-[#00FFD1] drop-shadow-lg">{personalInfo.title.split(' ')[0]} {personalInfo.title.split(' ')[1]} {personalInfo.title.split(' ')[2]}</span>
             <br />
