@@ -75,11 +75,13 @@ const Home = () => {
         </nav>
       </header>
 
-      {/* Hero Section with Tensor-Based Fluid Dynamics Background */}
+      {/* Hero Section with Enhanced Background */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        <TensorFluidBackground>
-          {/* Hero Content */}
-          <div className={`max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/40 via-blue-900/30 to-cyan-900/50 z-0"></div>
+        
+        {/* Hero Content */}
+        <div className={`relative z-10 max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="text-[#00FFD1] drop-shadow-lg">{personalInfo.title.split(' ')[0]} {personalInfo.title.split(' ')[1]} {personalInfo.title.split(' ')[2]}</span>
             <br />
