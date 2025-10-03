@@ -63,6 +63,60 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+# Fluid Dynamics Endpoints
+@api_router.get("/fluid-frame")
+async def get_fluid_frame(t: float = None):
+    """Get a single fluid dynamics frame as base64 encoded image"""
+    try:
+        if t is None:
+            t = time.time() * 0.5  # Auto-increment based on server time
+        
+        # Generate frame
+        frame_b64 = fluid_generator.generate_frame_base64(t, format='PNG')
+        
+        return JSONResponse({
+            "status": "success",
+            "frame": frame_b64,
+            "timestamp": t
+        })
+    except Exception as e:
+        logger.error(f"Error generating fluid frame: {e}")
+        return JSONResponse({
+            "status": "error", 
+            "message": str(e)
+        }, status_code=500)
+
+@api_router.get("/fluid-stream")
+async def get_fluid_stream():
+    """Get fluid dynamics parameters for real-time streaming"""
+    try:
+        current_time = time.time() * 0.3
+        frame_b64 = fluid_generator.generate_frame_base64(current_time, format='JPEG')
+        
+        return JSONResponse({
+            "status": "success",
+            "frame": frame_b64,
+            "timestamp": current_time,
+            "next_frame_delay": 100  # milliseconds
+        })
+    except Exception as e:
+        logger.error(f"Error in fluid stream: {e}")
+        return JSONResponse({
+            "status": "error",
+            "message": str(e)
+        }, status_code=500)
+
+@api_router.get("/fluid-config")
+async def get_fluid_config():
+    """Get fluid dynamics configuration"""
+    return JSONResponse({
+        "width": fluid_generator.width,
+        "height": fluid_generator.height,
+        "device": str(fluid_generator.device),
+        "animation_speed": 0.3,
+        "color_scheme": "ai_theme"
+    })
+
 # Include the router in the main app
 app.include_router(api_router)
 
