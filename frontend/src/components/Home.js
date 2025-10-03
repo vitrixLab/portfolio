@@ -77,11 +77,9 @@ const Home = () => {
 
       {/* Hero Section with Tensor-Based Fluid Dynamics Background */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        {/* Temporary fallback background while debugging */}
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/30 via-blue-900/20 to-cyan-900/40 z-0"></div>
-        
-        {/* Hero Content */}
-        <div className={`relative z-20 max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <TensorFluidBackground>
+          {/* Hero Content */}
+          <div className={`max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="text-[#00FFD1] drop-shadow-lg">{personalInfo.title.split(' ')[0]} {personalInfo.title.split(' ')[1]} {personalInfo.title.split(' ')[2]}</span>
             <br />
