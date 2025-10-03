@@ -9,7 +9,7 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { useToast } from '../hooks/use-toast';
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Building } from 'lucide-react';
-import FluidBackground from './FluidBackground';
+// import FluidBackground from './FluidBackground';
 
 const Home = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
