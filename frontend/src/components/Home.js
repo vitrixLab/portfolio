@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { projects, techStack, personalInfo } from '../data/mockData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -13,7 +13,86 @@ import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Bui
 const Home = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isVisible, setIsVisible] = useState(false);
+  const canvasRef = useRef(null);
   const { toast } = useToast();
+
+  // Fluid gradient animation
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let animationId;
+    
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    
+    const colors = [
+      'rgba(0, 255, 209, 0.3)',   // Primary cyan-green
+      'rgba(0, 85, 255, 0.25)',   // Deep blue
+      'rgba(0, 255, 170, 0.3)',   // Light green-cyan
+      'rgba(0, 170, 255, 0.25)',  // Sky blue
+      'rgba(0, 100, 150, 0.2)'    // Dark teal
+    ];
+    
+    let step = 0;
+    const gradientSpeed = 0.003;
+    
+    function animate() {
+      step += gradientSpeed;
+      
+      // Create multiple gradients for depth
+      const gradient1 = ctx.createRadialGradient(
+        width * 0.3, height * 0.3, 0,
+        width * 0.3, height * 0.3, width * 0.8
+      );
+      
+      const gradient2 = ctx.createLinearGradient(
+        0, 0, width, height
+      );
+      
+      // Dynamic color stops
+      const colorIndex = Math.floor(step * 2) % colors.length;
+      const colorIndex2 = Math.floor(step * 3) % colors.length;
+      const colorIndex3 = Math.floor(step * 4) % colors.length;
+      
+      gradient1.addColorStop(0, colors[colorIndex]);
+      gradient1.addColorStop(0.5, colors[colorIndex2]);
+      gradient1.addColorStop(1, 'rgba(0, 0, 0, 0.8)');
+      
+      gradient2.addColorStop(0, colors[colorIndex2]);
+      gradient2.addColorStop(0.5, colors[colorIndex3]);
+      gradient2.addColorStop(1, colors[(colorIndex + 1) % colors.length]);
+      
+      // Clear and draw gradients
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+      
+      ctx.fillStyle = gradient1;
+      ctx.fillRect(0, 0, width, height);
+      
+      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = gradient2;
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'source-over';
+      
+      animationId = requestAnimationFrame(animate);
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resize);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
