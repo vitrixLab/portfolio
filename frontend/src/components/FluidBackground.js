@@ -1,1 +1,183 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';\nimport axios from 'axios';\n\nconst BACKEND_URL = process.env.REACT_APP_BACKEND_URL;\nconst API = `${BACKEND_URL}/api`;\n\nconst FluidBackground = ({ className = '', style = {} }) => {\n  const canvasRef = useRef(null);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [error, setError] = useState(null);\n  const animationRef = useRef(null);\n  const lastFrameTime = useRef(0);\n  const frameDelay = 150; // ms between frames for smooth animation\n\n  const fetchFluidFrame = useCallback(async () => {\n    try {\n      const response = await axios.get(`${API}/fluid-stream`);\n      if (response.data.status === 'success') {\n        return response.data.frame;\n      } else {\n        throw new Error(response.data.message || 'Failed to fetch fluid frame');\n      }\n    } catch (err) {\n      console.warn('Fluid frame fetch failed, using fallback:', err.message);\n      return null;\n    }\n  }, []);\n\n  const drawFrame = useCallback(async (timestamp) => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n\n    const ctx = canvas.getContext('2d');\n    \n    // Only fetch new frame if enough time has passed\n    if (timestamp - lastFrameTime.current > frameDelay) {\n      const frameData = await fetchFluidFrame();\n      \n      if (frameData) {\n        const img = new Image();\n        img.onload = () => {\n          // Clear canvas and draw new frame\n          ctx.clearRect(0, 0, canvas.width, canvas.height);\n          \n          // Scale image to fit canvas while maintaining aspect ratio\n          const canvasAspect = canvas.width / canvas.height;\n          const imgAspect = img.width / img.height;\n          \n          let drawWidth, drawHeight, drawX, drawY;\n          \n          if (canvasAspect > imgAspect) {\n            drawWidth = canvas.width;\n            drawHeight = canvas.width / imgAspect;\n            drawX = 0;\n            drawY = (canvas.height - drawHeight) / 2;\n          } else {\n            drawHeight = canvas.height;\n            drawWidth = canvas.height * imgAspect;\n            drawX = (canvas.width - drawWidth) / 2;\n            drawY = 0;\n          }\n          \n          ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);\n          \n          if (!isLoaded) {\n            setIsLoaded(true);\n          }\n        };\n        img.onerror = () => {\n          console.warn('Failed to load fluid frame image');\n          drawFallbackGradient(ctx, canvas.width, canvas.height, timestamp);\n        };\n        img.src = frameData;\n        \n        lastFrameTime.current = timestamp;\n      } else {\n        // Fallback gradient animation\n        drawFallbackGradient(ctx, canvas.width, canvas.height, timestamp);\n        if (!isLoaded) {\n          setIsLoaded(true);\n        }\n      }\n    }\n\n    animationRef.current = requestAnimationFrame(drawFrame);\n  }, [fetchFluidFrame, isLoaded, frameDelay]);\n\n  const drawFallbackGradient = (ctx, width, height, timestamp) => {\n    // Fallback CSS-style gradient animation if tensor backend fails\n    const time = timestamp * 0.001;\n    \n    // Create dynamic gradient\n    const gradient = ctx.createLinearGradient(\n      Math.sin(time * 0.5) * width * 0.5 + width * 0.5,\n      Math.cos(time * 0.3) * height * 0.5 + height * 0.5,\n      Math.cos(time * 0.4) * width * 0.5 + width * 0.5,\n      Math.sin(time * 0.6) * height * 0.5 + height * 0.5\n    );\n    \n    const alpha1 = 0.3 + 0.2 * Math.sin(time * 0.8);\n    const alpha2 = 0.2 + 0.3 * Math.cos(time * 0.6);\n    const alpha3 = 0.4 + 0.2 * Math.sin(time * 1.2);\n    \n    gradient.addColorStop(0, `rgba(0, 255, 209, ${alpha1})`);\n    gradient.addColorStop(0.3, `rgba(0, 85, 255, ${alpha2})`);\n    gradient.addColorStop(0.7, `rgba(0, 255, 170, ${alpha3})`);\n    gradient.addColorStop(1, 'rgba(0, 100, 150, 0.2)');\n    \n    // Fill with gradient\n    ctx.fillStyle = '#000000';\n    ctx.fillRect(0, 0, width, height);\n    ctx.fillStyle = gradient;\n    ctx.fillRect(0, 0, width, height);\n  };\n\n  const resizeCanvas = useCallback(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n\n    const container = canvas.parentElement;\n    if (container) {\n      canvas.width = container.offsetWidth;\n      canvas.height = container.offsetHeight;\n    } else {\n      canvas.width = window.innerWidth;\n      canvas.height = window.innerHeight;\n    }\n  }, []);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n\n    // Initial setup\n    resizeCanvas();\n    \n    // Start animation\n    animationRef.current = requestAnimationFrame(drawFrame);\n\n    // Handle window resize\n    window.addEventListener('resize', resizeCanvas);\n\n    // Cleanup\n    return () => {\n      if (animationRef.current) {\n        cancelAnimationFrame(animationRef.current);\n      }\n      window.removeEventListener('resize', resizeCanvas);\n    };\n  }, [drawFrame, resizeCanvas]);\n\n  return (\n    <>\n      <canvas\n        ref={canvasRef}\n        className={`absolute inset-0 w-full h-full ${className}`}\n        style={{\n          zIndex: 0,\n          opacity: isLoaded ? 1 : 0,\n          transition: 'opacity 1s ease-in-out',\n          ...style\n        }}\n      />\n      \n      {/* Loading indicator */}\n      {!isLoaded && (\n        <div className=\"absolute inset-0 flex items-center justify-center z-10\">\n          <div className=\"text-center\">\n            <div className=\"w-8 h-8 border-2 border-[#00FFD1] border-t-transparent rounded-full animate-spin mx-auto mb-2\"></div>\n            <p className=\"text-[#00FFD1] text-sm font-medium\">Initializing AI Dynamics...</p>\n          </div>\n        </div>\n      )}\n      \n      {/* Error state */}\n      {error && (\n        <div className=\"absolute inset-0 bg-gradient-to-br from-blue-900/20 to-teal-900/20 z-0\" />\n      )}\n    </>\n  );\n};\n\nexport default FluidBackground;"
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const FluidBackground = ({ className = '', style = {} }) => {
+  const canvasRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+  const animationRef = useRef(null);
+  const lastFrameTime = useRef(0);
+  const frameDelay = 150; // ms between frames for smooth animation
+
+  const fetchFluidFrame = useCallback(async () => {
+    try {
+      const response = await axios.get(`${API}/fluid-stream`);
+      if (response.data.status === 'success') {
+        return response.data.frame;
+      } else {
+        throw new Error(response.data.message || 'Failed to fetch fluid frame');
+      }
+    } catch (err) {
+      console.warn('Fluid frame fetch failed, using fallback:', err.message);
+      return null;
+    }
+  }, []);
+
+  const drawFrame = useCallback(async (timestamp) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    
+    // Only fetch new frame if enough time has passed
+    if (timestamp - lastFrameTime.current > frameDelay) {
+      const frameData = await fetchFluidFrame();
+      
+      if (frameData) {
+        const img = new Image();
+        img.onload = () => {
+          // Clear canvas and draw new frame
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          // Scale image to fit canvas while maintaining aspect ratio
+          const canvasAspect = canvas.width / canvas.height;
+          const imgAspect = img.width / img.height;
+          
+          let drawWidth, drawHeight, drawX, drawY;
+          
+          if (canvasAspect > imgAspect) {
+            drawWidth = canvas.width;
+            drawHeight = canvas.width / imgAspect;
+            drawX = 0;
+            drawY = (canvas.height - drawHeight) / 2;
+          } else {
+            drawHeight = canvas.height;
+            drawWidth = canvas.height * imgAspect;
+            drawX = (canvas.width - drawWidth) / 2;
+            drawY = 0;
+          }
+          
+          ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+          
+          if (!isLoaded) {
+            setIsLoaded(true);
+          }
+        };
+        img.onerror = () => {
+          console.warn('Failed to load fluid frame image');
+          drawFallbackGradient(ctx, canvas.width, canvas.height, timestamp);
+        };
+        img.src = frameData;
+        
+        lastFrameTime.current = timestamp;
+      } else {
+        // Fallback gradient animation
+        drawFallbackGradient(ctx, canvas.width, canvas.height, timestamp);
+        if (!isLoaded) {
+          setIsLoaded(true);
+        }
+      }
+    }
+
+    animationRef.current = requestAnimationFrame(drawFrame);
+  }, [fetchFluidFrame, isLoaded, frameDelay]);
+
+  const drawFallbackGradient = (ctx, width, height, timestamp) => {
+    // Fallback CSS-style gradient animation if tensor backend fails
+    const time = timestamp * 0.001;
+    
+    // Create dynamic gradient
+    const gradient = ctx.createLinearGradient(
+      Math.sin(time * 0.5) * width * 0.5 + width * 0.5,
+      Math.cos(time * 0.3) * height * 0.5 + height * 0.5,
+      Math.cos(time * 0.4) * width * 0.5 + width * 0.5,
+      Math.sin(time * 0.6) * height * 0.5 + height * 0.5
+    );
+    
+    const alpha1 = 0.3 + 0.2 * Math.sin(time * 0.8);
+    const alpha2 = 0.2 + 0.3 * Math.cos(time * 0.6);
+    const alpha3 = 0.4 + 0.2 * Math.sin(time * 1.2);
+    
+    gradient.addColorStop(0, `rgba(0, 255, 209, ${alpha1})`);
+    gradient.addColorStop(0.3, `rgba(0, 85, 255, ${alpha2})`);
+    gradient.addColorStop(0.7, `rgba(0, 255, 170, ${alpha3})`);
+    gradient.addColorStop(1, 'rgba(0, 100, 150, 0.2)');
+    
+    // Fill with gradient
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+  };
+
+  const resizeCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const container = canvas.parentElement;
+    if (container) {
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+    } else {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Initial setup
+    resizeCanvas();
+    
+    // Start animation
+    animationRef.current = requestAnimationFrame(drawFrame);
+
+    // Handle window resize
+    window.addEventListener('resize', resizeCanvas);
+
+    // Cleanup
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, [drawFrame, resizeCanvas]);
+
+  return (
+    <>
+      <canvas
+        ref={canvasRef}
+        className={`absolute inset-0 w-full h-full ${className}`}
+        style={{
+          zIndex: 0,
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 1s ease-in-out',
+          ...style
+        }}
+      />
+      
+      {/* Loading indicator */}
+      {!isLoaded && (
+        <div className=\"absolute inset-0 flex items-center justify-center z-10\">
+          <div className=\"text-center\">
+            <div className=\"w-8 h-8 border-2 border-[#00FFD1] border-t-transparent rounded-full animate-spin mx-auto mb-2\"></div>
+            <p className=\"text-[#00FFD1] text-sm font-medium\">Initializing AI Dynamics...</p>
+          </div>
+        </div>
+      )}
+      
+      {/* Error state */}
+      {error && (
+        <div className=\"absolute inset-0 bg-gradient-to-br from-blue-900/20 to-teal-900/20 z-0\" />
+      )}
+    </>
+  );
+};
+
+export default FluidBackground;"
