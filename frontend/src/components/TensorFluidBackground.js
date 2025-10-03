@@ -87,4 +87,28 @@ const TensorFluidBackground = ({ children }) => {
         </div>
       )}
     </div>
-  );\n};\n\n// Add custom animation keyframes\nconst style = document.createElement('style');\nstyle.textContent = `\n  @keyframes tensorFlow {\n    0%, 100% { \n      transform: translateX(0) rotate(0deg);\n      opacity: 0.2;\n    }\n    25% { \n      transform: translateX(10px) rotate(1deg);\n      opacity: 0.3;\n    }\n    50% { \n      transform: translateX(-5px) rotate(-0.5deg);\n      opacity: 0.25;\n    }\n    75% { \n      transform: translateX(15px) rotate(0.5deg);\n      opacity: 0.35;\n    }\n  }\n`;\ndocument.head.appendChild(style);\n\nexport default TensorFluidBackground;"
+  );\n};\n\n// Add custom animation keyframes
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes tensorFlow {
+    0%, 100% { 
+      transform: translateX(0) rotate(0deg);
+      opacity: 0.2;
+    }
+    25% { 
+      transform: translateX(10px) rotate(1deg);
+      opacity: 0.3;
+    }
+    50% { 
+      transform: translateX(-5px) rotate(-0.5deg);
+      opacity: 0.25;
+    }
+    75% { 
+      transform: translateX(15px) rotate(0.5deg);
+      opacity: 0.35;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+export default TensorFluidBackground;"
