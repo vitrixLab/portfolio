@@ -14,14 +14,15 @@ const FluidBackground = ({ className = '', style = {} }) => {
 
   const fetchFluidFrame = useCallback(async () => {
     try {
-      const response = await axios.get(`${API}/fluid-stream`);
+      const response = await axios.get(`${API}/fluid-stream`, { timeout: 5000 });
       if (response.data.status === 'success') {
         return response.data.frame;
       } else {
-        throw new Error(response.data.message || 'Failed to fetch fluid frame');
+        console.warn('API returned error:', response.data.message);
+        return null;
       }
     } catch (err) {
-      console.warn('Fluid frame fetch failed, using fallback:', err.message);
+      console.warn('Fluid frame fetch failed, using fallback. Error:', err.message);
       return null;
     }
   }, []);
