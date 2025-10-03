@@ -27,8 +27,14 @@ db = client[os.environ['DB_NAME']]
 # Create the main app without a prefix
 app = FastAPI()
 
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
+
+# Initialize fluid dynamics generator
+fluid_generator = FluidDynamicsGenerator(width=1920, height=1080)
 
 
 # Define Models
