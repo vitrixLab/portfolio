@@ -8,7 +8,6 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { useToast } from '../hooks/use-toast';
-import TensorFluidBackground from './TensorFluidBackground';
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Building } from 'lucide-react';
 
 const Home = () => {
