@@ -124,6 +124,7 @@ const Home = () => {
               <div className="text-white/80">Clients</div>
             </div>
           </div>
+          </div>
         </TensorFluidBackground>
       </section>
 
