@@ -153,23 +153,31 @@ const Home = () => {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div className={`max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      {/* Hero Section with Fluid Gradient Background */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
+        {/* Animated Gradient Canvas */}
+        <canvas 
+          ref={canvasRef}
+          className="absolute top-0 left-0 w-full h-full z-0"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
+        />
+        
+        {/* Hero Content */}
+        <div className={`relative z-10 max-w-4xl text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-[#00FFD1]">{personalInfo.title.split(' ')[0]} {personalInfo.title.split(' ')[1]} {personalInfo.title.split(' ')[2]}</span>
+            <span className="text-[#00FFD1] drop-shadow-lg">{personalInfo.title.split(' ')[0]} {personalInfo.title.split(' ')[1]} {personalInfo.title.split(' ')[2]}</span>
             <br />
-            <span className="text-white">{personalInfo.title.split('&')[1]}</span>
+            <span className="text-white drop-shadow-lg">{personalInfo.title.split('&')[1]}</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/85 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/95 mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
             {personalInfo.tagline}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               onClick={() => scrollToSection('projects')}
-              className="bg-[#00FFD1] text-black hover:bg-[#00FFD1]/90 font-semibold px-8 py-3 text-lg border-0 rounded-none min-h-[56px]"
+              className="bg-[#00FFD1] text-black hover:bg-[#00FFD1]/90 hover:scale-105 font-semibold px-8 py-3 text-lg border-0 rounded-none min-h-[56px] shadow-xl transition-all duration-300"
             >
               Explore Projects
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -178,26 +186,26 @@ const Home = () => {
             <Button 
               onClick={() => scrollToSection('contact')}
               variant="outline"
-              className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-black font-semibold px-8 py-3 text-lg rounded-none min-h-[56px]"
+              className="bg-white/20 backdrop-blur-sm text-white border-white/40 hover:bg-white hover:text-black hover:scale-105 font-semibold px-8 py-3 text-lg rounded-none min-h-[56px] shadow-xl transition-all duration-300"
             >
               Get In Touch
               <Mail className="ml-2 h-5 w-5" />
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Stats with Enhanced Styling */}
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1]">{personalInfo.experience}</div>
-              <div className="text-white/70">Experience</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1] drop-shadow-lg">{personalInfo.experience}</div>
+              <div className="text-white/80">Experience</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1]">{personalInfo.projectsCompleted}</div>
-              <div className="text-white/70">Projects</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1] drop-shadow-lg">{personalInfo.projectsCompleted}</div>
+              <div className="text-white/80">Projects</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1]">{personalInfo.clientsSatisfied}</div>
-              <div className="text-white/70">Clients</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="text-2xl md:text-3xl font-bold text-[#00FFD1] drop-shadow-lg">{personalInfo.clientsSatisfied}</div>
+              <div className="text-white/80">Clients</div>
             </div>
           </div>
         </div>
