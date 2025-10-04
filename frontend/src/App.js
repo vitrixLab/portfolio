@@ -1,20 +1,27 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import { Toaster } from './components/ui/toaster';
+// src/components/Home.js
+import React, { useEffect, useState } from "react";
 
-function App() {
+function Home() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Call backend API
+    fetch("https://vitrixlab.pythonanywhere.com/api/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.error("API error:", err));
+  }, []);
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Toaster />
-      </BrowserRouter>
+    <div>
+      <h1>Users from Backend</h1>
+      <ul>
+        {users.map((u) => (
+          <li key={u.id}>{u.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-export default App;
+export default Home;
