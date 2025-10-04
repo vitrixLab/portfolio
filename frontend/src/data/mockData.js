@@ -7,7 +7,7 @@ export const projects = [
     description: "Architected and deployed SAP S/4HANA cloud migration for Fortune 500 company, reducing operational costs by 40% and improving system performance by 3x.",
     techStack: ["Kubernetes", "Docker", "SAP", "Azure", "Terraform"],
     category: "Cloud Architecture",
-    status: "Completed",
+    status: "Ongoing",
     duration: "8 months",
     highlights: [
       "Zero-downtime migration strategy",
@@ -106,7 +106,7 @@ export const personalInfo = {
   experience: "8+ years",
   projectsCompleted: "50+",
   clientsSatisfied: "25+",
-  email: "soo.ji.dano@cloudarchitect.dev",
-  location: "San Francisco, CA",
+  email: "soojidano@gmail.com",
+  location: "Manila, PH",
   availability: "Available for consulting"
 };
