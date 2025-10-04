@@ -330,16 +330,28 @@ const Home = () => {
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-[#00FFD1]" />
-                  <span>{personalInfo.email}</span>
+                  <a href="mailto:soojidano@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <Mail className="h-5 w-5 text-[#00FFD1]" />
+                  </a>
+                  <a href="mailto:soojidano@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <span>{personalInfo.email}</span>
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Github className="h-5 w-5 text-[#00FFD1]" />
-                  <span>github.com/soo-ji-dano</span>
+                  <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-5 w-5 text-[#00FFD1]" />
+                  </a>
+                  <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer">
+                    <span>github.com/vitrixlab</span>
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Linkedin className="h-5 w-5 text-[#00FFD1]" />
-                  <span>linkedin.com/in/soo-ji-dano</span>
+                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5 text-[#00FFD1]" />
+                  </a>
+                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                    <span>linkedin.com/in/jasondano</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -408,15 +420,21 @@ const Home = () => {
             </div>
             
             <div className="flex space-x-6">
-              <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                <Github className="h-5 w-5" />
-              </button>
-              <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                <Linkedin className="h-5 w-5" />
-              </button>
-              <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                <Mail className="h-5 w-5" />
-              </button>
+              <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer">
+                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
+                  <Github className="h-5 w-5" />
+                </button>
+              </a>
+              <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
+                  <Linkedin className="h-5 w-5" />
+                </button>
+              </a>
+              <a href="mailto:soojidano@gmail.com" target="_blank" rel="noopener noreferrer">
+                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
+                  <Mail className="h-5 w-5" />
+                </button>
+              </a>
             </div>
           </div>
         </div>
