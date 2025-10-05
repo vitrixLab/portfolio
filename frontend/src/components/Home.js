@@ -10,6 +10,8 @@ import { Label } from './ui/label';
 import { useToast } from '../hooks/use-toast';
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Building } from 'lucide-react';
 
+import Nav from "./Nav";   // <-- import the Nav component
+
 const Home = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isVisible, setIsVisible] = useState(false);
@@ -32,19 +34,31 @@ const Home = () => {
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  {/* 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+ */}
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation Header */}
-      <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-white/10 z-50">
+      <header className="fixed top-0 w-full bg-transparent backdrop-blur-sm z-50">
+       {/*
+       <header className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-white/10 z-50">
+     
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+          
           <div className="text-xl font-bold text-[#00FFD1]">
             {personalInfo.name}
           </div>
+          
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')}
@@ -72,8 +86,11 @@ const Home = () => {
             </button>
           </div>
         </nav>
-      </header>
+          */}
+          
+      <Nav scrollToSection={scrollToSection} />
 
+      </header>
       {/* Hero Section with Enhanced Background */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
         {/* Gradient Background */}
@@ -323,6 +340,14 @@ const Home = () => {
           
           <div className="grid md:grid-cols-2 gap-12">
             <div>
+                    <div
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="body__logo flex items-center gap-0"
+                        >
+                        <img loading="lazy" src="https://i.postimg.cc/TYxBnr17/soojidano-logo-hero-3.jpg" alt="Logo"/>
+                    </div>
               <h3 className="text-xl font-semibold mb-6 text-[#00FFD1]">Let's Connect</h3>
               <p className="text-white/80 mb-6 leading-relaxed">
                 I'm always excited to discuss new opportunities and challenging projects. Whether you need cloud architecture consultation, enterprise integration, or AI-powered solutions, I'm here to help.
