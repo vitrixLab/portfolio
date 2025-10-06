@@ -203,7 +203,7 @@ const Nav = ({ scrollToSection }) => {
                                         <div className="submenu-content__link-img">
                                         <img
                                             loading="lazy"
-                                            src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/golf_1.png"
+                                            src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-1.png"
                                             alt="ERP Cloud Migration - Cost Savings"
                                         />
                                         </div>
@@ -218,8 +218,8 @@ const Nav = ({ scrollToSection }) => {
                                         <div className="submenu-content__link-img">
                                         <img
                                             loading="lazy"
-                                            src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/golf_2.png"
-                                            alt="Golf"
+                                            src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-2.png"
+                                            alt="ERP Cloud Migration - System Boost"
                                         />
                                         </div>
                                         <div className="submenu-content__link-title">System Performance Boost</div>
@@ -233,8 +233,8 @@ const Nav = ({ scrollToSection }) => {
                                         <div className="submenu-content__link-img">
                                         <img
                                             loading="lazy"
-                                            src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/golf_3.png"
-                                            alt="Golf"
+                                            src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-3.png"
+                                            alt="ERP Cloud Migration - Cloud Transform"
                                         />
                                         </div>
                                         <div className="submenu-content__link-title">Cloud Transformation Success</div>
@@ -292,7 +292,7 @@ const Nav = ({ scrollToSection }) => {
                                     <img
                                     loading="lazy"
                                     src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_1.png"
-                                    alt="Project Image 1"
+                                    alt="Ultra-Low Latency APIs"
                                     />
                                 </div>
                                 <div className="submenu-content__link-title">Ultra-Low Latency APIs</div>
@@ -308,7 +308,7 @@ const Nav = ({ scrollToSection }) => {
                                     <img
                                     loading="lazy"
                                     src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_2.png"
-                                    alt="Project Image 2"
+                                    alt="Seamless LLM Integration"
                                     />
                                 </div>
                                 <div className="submenu-content__link-title">Seamless LLM Integration</div>
@@ -324,7 +324,7 @@ const Nav = ({ scrollToSection }) => {
                                     <img
                                     loading="lazy"
                                     src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_3.png"
-                                    alt="Project Image 3"
+                                    alt="Scalable Cloud Architecture"
                                     />
                                 </div>
                                 <div className="submenu-content__link-title">Scalable Cloud Architecture</div>
