@@ -328,14 +328,35 @@ img {
 	transition: var(--transition);
 }
 
+/*
 .submenu-content__link-img {
 	margin-bottom: 20px;
 	border-radius: 13px;
 	overflow: hidden;
 	transition: var(--transition);
 }
+*/
+
+.submenu-content__link-img {
+  display: block;                 /* makes images behave predictably */
+  margin: 0 auto 20px;  		  /* centers the image + bottom margin */
+  width: 100%;                    /* full width of container */
+  max-width: 320px;               /* set max size (adjust as needed) */
+  height: auto;                   /* keeps aspect ratio */
+  margin-bottom: 20px;
+
+  border-radius: 13px;            /* rounded corners */
+  border: 0px solid #eee;         /* add border color + thickness */
+  overflow: hidden;
+
+  /* transition: transform 0.3s ease;  smoother hover animation */
+}
 
 .submenu-content__link-img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: inherit;   /* makes sure the child respects parent radius */
 	transition: 0.4s ease-in;
 }
 
