@@ -195,8 +195,8 @@ const Nav = ({ scrollToSection }) => {
                             </span>
                             </a>
 
-                            <div className="submenu-content">
-                                <div className="submenu-content__title">Latest News</div>
+                            <div className="submenu-content" style={{visibility: 'visible'}}>
+                                <div className="submenu-content__title">Project Highlights</div>
                                 <ul className="submenu-content__list">
                                     <li className="submenu-content__list-item">
                                     <a href="#" className="submenu-content__link">
@@ -291,7 +291,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                     <img
                                     loading="lazy"
-                                    src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_1.png"
+                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-1.png"
                                     alt="Ultra-Low Latency APIs"
                                     />
                                 </div>
@@ -307,7 +307,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                     <img
                                     loading="lazy"
-                                    src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_2.png"
+                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-2.jpg"
                                     alt="Seamless LLM Integration"
                                     />
                                 </div>
@@ -323,7 +323,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                     <img
                                     loading="lazy"
-                                    src="https://bato-web-agency.github.io/bato-shared/img/mega-menu/sports/basketball_3.png"
+                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-3.jpg"
                                     alt="Scalable Cloud Architecture"
                                     />
                                 </div>
