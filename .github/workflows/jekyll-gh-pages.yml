@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./  # <-- set to folder where package.json is
+        working-directory: ./frontend  # <-- set to folder where package.json is
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
