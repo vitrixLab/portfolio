@@ -263,8 +263,13 @@ const Home = () => {
                         <span className="text-sm text-white/80">{highlight}</span>
                       </div>
                     ))}
-                  </div>
-                  
+                  </div> 
+                <a 
+                  href="https://github.com/vitrixLab/SAP-Project-Phase-3-fiori-elements-feature-showcase" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
                   <Button 
                     variant="outline"
                     className="mt-4 w-full bg-transparent border-[#00FFD1]/50 text-[#00FFD1] hover:bg-[#00FFD1] hover:text-black transition-all duration-300 rounded-none"
@@ -272,6 +277,7 @@ const Home = () => {
                     View Details
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
+                </a>
                 </CardContent>
               </Card>
             ))}
