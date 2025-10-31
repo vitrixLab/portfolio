@@ -214,7 +214,7 @@ const Nav = ({ scrollToSection }) => {
                                     </a>
                                     </li>
                                     <li className="submenu-content__list-item">
-                                    <a href="#" className="submenu-content__link">
+                                    <a href="#" className="https://github.com/vitrixLab/SAP-Project-Phase-2-abap-platform-rap110>
                                         <div className="submenu-content__link-img">
                                         <img
                                             loading="lazy"
