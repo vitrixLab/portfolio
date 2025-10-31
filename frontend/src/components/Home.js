@@ -265,7 +265,7 @@ const Home = () => {
                     ))}
                   </div> 
                 <a 
-                  href="https://vitrixlab.github.io/SAP-Project-Phase-4-abap-partner-reference-application/" 
+                  href="https://github.com/vitrixLab/SAP-Project-Phase-4-abap-partner-reference-application" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full"
