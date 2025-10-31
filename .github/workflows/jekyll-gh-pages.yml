@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./  # <-- set to folder where package.json is
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,15 +30,15 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # or `yarn install` if you use yarn
 
       - name: Build project
-        run: npm run build
+        run: npm run build  # CRACO build creates `build/` folder
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build  # CRA/CRACO outputs to `build` by default
+          path: ./build
 
   deploy:
     runs-on: ubuntu-latest
