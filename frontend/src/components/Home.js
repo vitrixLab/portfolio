@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { projects, techStack, personalInfo } from '../data/mockData';
+import { projects, techStack, personalInfo, techStackURL } from '../data/mockData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -246,17 +246,16 @@ const Home = () => {
                     <p className="text-sm text-white/60 mb-2">Duration: {project.duration}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
-                        <a
+                        
+                        <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
+                          <a
                           key={tech}
                           href={techStackURL[tech]} // ✅ dynamically links to correct URL
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-full"
-                        >
-                          <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
-                            {tech}
-                          </Badge>
-                        </a>
+                          >{tech}</a>
+                        </Badge>
                       ))}
                     </div>
                   </div>
