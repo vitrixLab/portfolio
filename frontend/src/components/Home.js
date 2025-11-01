@@ -12,6 +12,9 @@ import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Bui
 
 import Nav from "./Nav";   // <-- import the Nav component
 
+// Import the Contact component at the top of Home.js
+import Contact from './Contact';  
+
 const Home = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isVisible, setIsVisible] = useState(false);
@@ -337,6 +340,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
+      {/* 
       <section id="contact" className="py-20 px-6 bg-white/[0.02]">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
@@ -446,6 +450,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      */}
+      
+      <Contact />
 
       {/* Footer */}
       <footer className="bg-black border-t border-white/10 py-8 px-6">
@@ -461,7 +468,7 @@ const Home = () => {
                   <Github className="h-5 w-5" />
                 </button>
               </a>
-              <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                 <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
                   <Linkedin className="h-5 w-5" />
                 </button>
