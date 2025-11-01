@@ -246,9 +246,17 @@ const Home = () => {
                     <p className="text-sm text-white/60 mb-2">Duration: {project.duration}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
-                          {tech}
-                        </Badge>
+                          <a
+                            key={tech}
+                            href={techStackURL[tech]} // ✅ dynamically links to correct URL
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full"
+                          >
+                          <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
+                            {tech}
+                          </Badge>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -377,10 +385,10 @@ const Home = () => {
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-5 w-5 text-[#00FFD1]" />
                   </a>
-                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                     <span>linkedin.com/in/jasondano</span>
                   </a>
                 </div>
