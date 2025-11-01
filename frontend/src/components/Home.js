@@ -155,7 +155,7 @@ const Home = () => {
             <div className="w-24 h-1 bg-[#00FFD1] mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div>
               <p className="text-lg text-white/85 leading-relaxed mb-6">
                 {personalInfo.bio}
@@ -214,8 +214,7 @@ const Home = () => {
               Showcase of enterprise-grade cloud solutions and AI integrations
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
               <Card 
                 key={project.id}
@@ -246,7 +245,6 @@ const Home = () => {
                     <p className="text-sm text-white/60 mb-2">Duration: {project.duration}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
-                        
                         <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
                           <a
                           key={tech}
@@ -305,7 +303,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-12 max-w-6xl mx-auto">
             {techStack.map((category, categoryIndex) => (
               <div key={categoryIndex}>
                 <h3 className="text-2xl font-semibold mb-6 text-[#00FFD1] flex items-center">
@@ -316,7 +314,7 @@ const Home = () => {
                   {category.category}
                 </h3>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
                   {category.technologies.map((tech, techIndex) => (
                     <div 
                       key={techIndex}
@@ -351,7 +349,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
             <div>
                     <div
                         href="#"
