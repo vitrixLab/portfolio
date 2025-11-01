@@ -34,7 +34,8 @@ export const projects = [
       "Zero-downtime migration strategy",
       "Implemented microservices architecture",
       "Automated CI/CD pipeline with 99.9% uptime"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/SAP-Project-Phase-4-abap-partner-reference-application",
   },
   {
     id: 2,
@@ -48,7 +49,8 @@ export const projects = [
       "Local LLM evaluation pipeline",
       "SLM optimization for native code",
       "Auto-scaling microservices architecture"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/open-webui",
   },
   {
     id: 3,
@@ -62,7 +64,8 @@ export const projects = [
       "Cross-cloud service mesh implementation",
       "Automated infrastructure provisioning",
       "Real-time monitoring and alerting"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/Multi-Cloud-DevOps-Pipeline",
   },
   {
     id: 4,
@@ -76,7 +79,8 @@ export const projects = [
       "Real-time data streaming pipeline",
       "Advanced analytics dashboard",
       "Machine learning-powered insights"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/Business-Intelligence-Integration-Suite",
   }
 ];
 
