@@ -198,51 +198,64 @@ const Nav = ({ scrollToSection }) => {
                           <div className="submenu-content__title">Project Highlights</div>
                           <ul className="submenu-content__list">
                             <li className="submenu-content__list-item">
-                              <a href="https://github.com/vitrixLab/SAP-Project-Phase-1-abap-platform-rap120" className="submenu-content__link">
-                                <div className="submenu-content__link-img">
+                              <div className="submenu-content__link-img">
+                                <a 
+                                  href="https://github.com/vitrixLab/SAP-Project-Phase-1-abap-platform-rap120" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="submenu-content__link"
+                                >
                                   <img
                                     loading="lazy"
                                     src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-1.png"
                                     alt="ERP Cloud Migration - Cost Savings"
                                   />
-                                </div>
-                                <div className="submenu-content__link-title">Cost Optimization Achieved</div>
-                                <div className="submenu-content__link-text">
-                                  Achieved 40% reduction in operational costs through SAP S/4HANA cloud migration for a Fortune 500 client.
-                                </div>
-                              </a>
+                                </a>  
+                              </div>
+                              <div className="submenu-content__link-title">Cost Optimization Achieved</div>
+                              <div className="submenu-content__link-text">
+                                Achieved 40% reduction in operational costs through SAP S/4HANA cloud migration for a Fortune 500 client.
+                              </div>
                             </li>
                             <li className="submenu-content__list-item">
-                              <a href="https://github.com/vitrixLab/SAP-Project-Phase-2-abap-platform-rap110" className="submenu-content__link">
-                                <div className="submenu-content__link-img">
-                                  <a href="https://github.com/vitrixLab/SAP-Project-Phase-2-abap-platform-rap110" className="submenu-content__link">
-                                    <img
-                                      loading="lazy"
-                                      src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-2.png"
-                                      alt="ERP Cloud Migration - System Boost"
-                                    />
-                                  </a>
-                                </div>
-                                <div className="submenu-content__link-title">System Performance Boost</div>
-                                <div className="submenu-content__link-text">
-                                  Increased system processing speed by 3×, enhancing efficiency across critical business operations.
-                                </div>
-                              </a>
+                              <div className="submenu-content__link-img">
+                                <a 
+                                    href="https://github.com/vitrixLab/SAP-Project-Phase-2-abap-platform-rap110" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="submenu-content__link"
+                                >
+                                  <img
+                                    loading="lazy"
+                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-2.png"
+                                    alt="ERP Cloud Migration - System Boost"
+                                  />
+                                </a>
+                              </div>
+                              <div className="submenu-content__link-title">System Performance Boost</div>
+                              <div className="submenu-content__link-text">
+                                Increased system processing speed by 3×, enhancing efficiency across critical business operations.
+                              </div>
                             </li>
                             <li className="submenu-content__list-item">
-                              <a href="https://github.com/vitrixLab/SAP-Project-Phase-3-fiori-elements-feature-showcase" className="submenu-content__link">
-                                <div className="submenu-content__link-img">
+                              <div className="submenu-content__link-img">
+                                <a 
+                                  href="https://github.com/vitrixLab/SAP-Project-Phase-3-fiori-elements-feature-showcase" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="submenu-content__link"
+                                >
                                   <img
                                     loading="lazy"
                                     src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-3.png"
                                     alt="ERP Cloud Migration - Cloud Transform"
                                   />
-                                </div>
-                                <div className="submenu-content__link-title">Cloud Transformation Success</div>
-                                <div className="submenu-content__link-text">
-                                  Seamless SAP S/4HANA migration to the cloud, modernizing legacy infrastructure while minimizing downtime.
-                                </div>
-                              </a>
+                                </a>
+                              </div>
+                              <div className="submenu-content__link-title">Cloud Transformation Success</div>
+                              <div className="submenu-content__link-text">
+                                Seamless SAP S/4HANA migration to the cloud, modernizing legacy infrastructure while minimizing downtime.
+                              </div>
                             </li>
                           </ul>
                         </div>
