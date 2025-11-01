@@ -1,5 +1,26 @@
 // Mock data for Cloud System Architect Portfolio
 
+export const techStackURL = {
+  "Kubernetes" : "https://github.com/vitrixLab/kubernetes",
+  "Docker" : "https://github.com/vitrixLab/docker",
+  "SAP" : "https://github.com/vitrixLab/SAP",
+  "Azure" : "https://github.com/vitrixLab/Azure",
+  "Terraform" : "https://github.com/vitrixLab/Azure-Terraform",
+  "NodeJS" : "https://github.com/vitrixLab/Node.js",
+  "Python" : "https://github.com/vitrixLab/cpython", 
+  "LLM" : "https://github.com/vitrixLab/MCP-Server-LLM",
+  "PostgreSQL" : "https://github.com/vitrixLab/Supabase-PostgreSQL",
+  "Jenkins" : "https://github.com/vitrixLab/jenkins",
+  "Helm" : "https://github.com/vitrixLab/helm",
+  "AWS" : "https://github.com/vitrixLab/aws-sam-cli",
+  "Prometheus" : "https://github.com/vitrixLab/prometheus",
+  "Apache Kafka" : "https://github.com/vitrixLab/kafka",
+  "Spark" : "https://github.com/vitrixLab/spark",
+  "ElasticSearch" : "https://github.com/vitrixLab/elasticsearch",
+  "React" : "https://github.com/vitrixLab/react",
+  "MongoDB" : "https://github.com/vitrixLab/mongoDB",
+};
+
 export const projects = [
   {
     id: 1,
@@ -13,7 +34,8 @@ export const projects = [
       "Zero-downtime migration strategy",
       "Implemented microservices architecture",
       "Automated CI/CD pipeline with 99.9% uptime"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/SAP-Project-Phase-4-abap-partner-reference-application",
   },
   {
     id: 2,
@@ -27,7 +49,8 @@ export const projects = [
       "Local LLM evaluation pipeline",
       "SLM optimization for native code",
       "Auto-scaling microservices architecture"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/AI-Powered-Microservices-Platform",
   },
   {
     id: 3,
@@ -41,7 +64,8 @@ export const projects = [
       "Cross-cloud service mesh implementation",
       "Automated infrastructure provisioning",
       "Real-time monitoring and alerting"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/Multi-Cloud-DevOps-Pipeline",
   },
   {
     id: 4,
@@ -55,7 +79,8 @@ export const projects = [
       "Real-time data streaming pipeline",
       "Advanced analytics dashboard",
       "Machine learning-powered insights"
-    ]
+    ],
+    title_URL: "https://github.com/vitrixLab/Business-Intelligence-Integration-Suite",
   }
 ];
 

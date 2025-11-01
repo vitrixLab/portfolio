@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { projects, techStack, personalInfo } from '../data/mockData';
+import { projects, techStack, personalInfo, techStackURL } from '../data/mockData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -11,6 +11,9 @@ import { useToast } from '../hooks/use-toast';
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink, Code, Cloud, Zap, Building } from 'lucide-react';
 
 import Nav from "./Nav";   // <-- import the Nav component
+
+// Import the Contact component at the top of Home.js
+import Contact from './Contact';  
 
 const Home = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -155,7 +158,7 @@ const Home = () => {
             <div className="w-24 h-1 bg-[#00FFD1] mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div>
               <p className="text-lg text-white/85 leading-relaxed mb-6">
                 {personalInfo.bio}
@@ -214,8 +217,7 @@ const Home = () => {
               Showcase of enterprise-grade cloud solutions and AI integrations
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
               <Card 
                 key={project.id}
@@ -247,7 +249,13 @@ const Home = () => {
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
                         <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
-                          {tech}
+                          <a
+                          key={tech}
+                          href={techStackURL[tech]} // ✅ dynamically links to correct URL
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full"
+                          >{tech}</a>
                         </Badge>
                       ))}
                     </div>
@@ -265,7 +273,7 @@ const Home = () => {
                     ))}
                   </div> 
                 <a 
-                  href="https://github.com/vitrixLab/SAP-Project-Phase-4-abap-partner-reference-application" 
+                  href={project.title_URL}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full"
@@ -298,7 +306,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-12 max-w-6xl mx-auto">
             {techStack.map((category, categoryIndex) => (
               <div key={categoryIndex}>
                 <h3 className="text-2xl font-semibold mb-6 text-[#00FFD1] flex items-center">
@@ -309,7 +317,7 @@ const Home = () => {
                   {category.category}
                 </h3>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
                   {category.technologies.map((tech, techIndex) => (
                     <div 
                       key={techIndex}
@@ -332,6 +340,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
+      {/* 
       <section id="contact" className="py-20 px-6 bg-white/[0.02]">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
@@ -344,7 +353,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
             <div>
                     <div
                         href="#"
@@ -377,10 +386,10 @@ const Home = () => {
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-5 w-5 text-[#00FFD1]" />
                   </a>
-                  <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                     <span>linkedin.com/in/jasondano</span>
                   </a>
                 </div>
@@ -441,6 +450,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      */}
+      
+      <Contact />
 
       {/* Footer */}
       <footer className="bg-black border-t border-white/10 py-8 px-6">
@@ -456,7 +468,7 @@ const Home = () => {
                   <Github className="h-5 w-5" />
                 </button>
               </a>
-              <a href="www.linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
                 <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
                   <Linkedin className="h-5 w-5" />
                 </button>
