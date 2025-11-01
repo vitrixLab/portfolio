@@ -246,13 +246,13 @@ const Home = () => {
                     <p className="text-sm text-white/60 mb-2">Duration: {project.duration}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech) => (
-                          <a
-                            key={tech}
-                            href={techStackURL[tech]} // ✅ dynamically links to correct URL
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full"
-                          >
+                        <a
+                          key={tech}
+                          href={techStackURL[tech]} // ✅ dynamically links to correct URL
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full"
+                        >
                           <Badge key={tech} variant="secondary" className="bg-white/10 text-white/90 border-0 text-xs">
                             {tech}
                           </Badge>
@@ -273,7 +273,7 @@ const Home = () => {
                     ))}
                   </div> 
                 <a 
-                  href="https://github.com/vitrixLab/SAP-Project-Phase-4-abap-partner-reference-application" 
+                  href={project.title_URL}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full"
