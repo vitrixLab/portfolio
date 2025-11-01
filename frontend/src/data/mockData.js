@@ -50,7 +50,7 @@ export const projects = [
       "SLM optimization for native code",
       "Auto-scaling microservices architecture"
     ],
-    title_URL: "https://github.com/vitrixLab/open-webui",
+    title_URL: "https://github.com/vitrixLab/AI-Powered-Microservices-Platform",
   },
   {
     id: 3,
