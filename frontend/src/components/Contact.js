@@ -19,6 +19,7 @@ const Contact = () => {
 
   // reCAPTCHA site key - use environment variable in production
   const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+  const URL_API_V1_TESTEMAIL = process.env.URL_API_V1_TESTEMAIL || 'https://vitrixlab.pythonanywhere.com/api/v1/test-email';
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -88,9 +89,9 @@ const Contact = () => {
     if (!validateForm()) {
       return;
     }
-
+  
     setIsSubmitting(true);
-
+  
     try {
       // Prepare form data with reCAPTCHA token
       const submissionData = {
@@ -98,50 +99,33 @@ const Contact = () => {
         'g-recaptcha-response': captchaToken,
         timestamp: new Date().toISOString()
       };
-
+  
       console.log('Form submission data:', submissionData);
-
-      // TODO: Replace with your actual form submission endpoint
-      // Example backend integration:
-      /*
-      const response = await fetch('/api/contact', {
+  
+      // POST request to your PythonAnywhere Flask backend
+      const response = await fetch(URL_API_V1_TESTEMAIL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(submissionData),
       });
-
+  
+      const data = await response.json();
+  
       if (response.ok) {
-        // Success handling
-        alert('Message sent successfully! I\'ll get back to you soon.');
-        // Reset form
+        alert(data.message || 'Message sent successfully! I\'ll get back to you soon.');
+  
+        // Reset form and reCAPTCHA
         setFormData({ name: '', email: '', message: '' });
         setCaptchaToken(null);
-        // Reset reCAPTCHA
         if (window.grecaptcha) {
           window.grecaptcha.reset();
         }
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(data.message || 'Failed to send message');
       }
-      */
-
-      // Simulate API call for demo purposes
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Success handling
-      alert('Message sent successfully! I\'ll get back to you soon.');
-      
-      // Reset form
-      setFormData({ name: '', email: '', message: '' });
-      setCaptchaToken(null);
-      
-      // Reset reCAPTCHA
-      if (window.grecaptcha) {
-        window.grecaptcha.reset();
-      }
-
+  
     } catch (error) {
       console.error('Form submission error:', error);
       setErrors(prev => ({ 
@@ -153,6 +137,25 @@ const Contact = () => {
     }
   };
 
+  const handleTestEmail = async () => {
+    try {
+      const response = await fetch(URL_API_V1_TESTEMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sender: 'me@example.com',
+          subject: 'Hello from frontend',
+          body: 'This is a test email sent via POST from frontend'
+        })
+      });
+  
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error('Error sending test email:', error);
+    }
+  };
+  
   return (
     <section id="contact" className="py-20 px-6 bg-white/[0.02]">
       <div className="container mx-auto max-w-4xl">
@@ -220,7 +223,9 @@ const Contact = () => {
           </div>
           
           {/* Contact Form */}
-          <form onSubmit={handleFormSubmit} className="space-y-6">
+          {/* <form onSubmit={handleFormSubmit} className="space-y-6"> */}
+          <form onSubmit={handleTestEmail} className="space-y-6">
+            
             {/* Name Field */}
             <div>
               <Label htmlFor="name" className="text-white mb-2 block">
