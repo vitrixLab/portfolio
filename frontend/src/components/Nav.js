@@ -558,13 +558,13 @@ const Nav = ({ scrollToSection }) => {
           </nav>
 
           <div className="header__buttons-wrapper">
-            <a href="#" className="header__button">
+            <a href="#contact" className="header__button">
               <span>Get a Demo</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
                 <path d="M0.5 6.99996H15.5M15.5 6.99996L9.66667 1.16663M15.5 6.99996L9.66667 12.8333" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a href="#" className="header__button">
+            <a href="#contact" className="header__button">
               <span>Consult Now</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
                 <path d="M0.5 6.99996H15.5M15.5 6.99996L9.66667 1.16663M15.5 6.99996L9.66667 12.8333" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
