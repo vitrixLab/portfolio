@@ -6,153 +6,112 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Mail, Github, Linkedin, ArrowRight } from 'lucide-react';
 import { personalInfo } from '../data/mockData';
+import { useToast } from '../hooks/use-toast';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [captchaToken, setCaptchaToken] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
-  // reCAPTCHA site key - use environment variable in production
+  const { toast } = useToast(); // correct
+
   const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+  const URL_API_V1_TESTEMAIL = process.env.URL_API_V1_TESTEMAIL || 'https://vitrixlab.pythonanywhere.com/api/v1/test-email';
+
+  // Helper function to show toast
+  const showToast = (status, description, title = '') => {
+    toast({
+      title,
+      description,
+      status,
+      duration: 5000,
+      isClosable: true,
+    });
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-    // Clear errors when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const handleRecaptchaChange = (token) => {
     setCaptchaToken(token);
-    // Clear reCAPTCHA error when user completes it
-    if (errors.recaptcha) {
-      setErrors(prev => ({ ...prev, recaptcha: '' }));
-    }
+    if (errors.recaptcha) setErrors(prev => ({ ...prev, recaptcha: '' }));
   };
 
   const handleRecaptchaError = () => {
-    setErrors(prev => ({ 
-      ...prev, 
-      recaptcha: 'Failed to load reCAPTCHA. Please refresh the page.' 
-    }));
+    setErrors(prev => ({ ...prev, recaptcha: 'Failed to load reCAPTCHA. Please refresh the page.' }));
   };
 
   const handleRecaptchaExpire = () => {
     setCaptchaToken(null);
-    setErrors(prev => ({ 
-      ...prev, 
-      recaptcha: 'reCAPTCHA expired. Please verify again.' 
-    }));
+    setErrors(prev => ({ ...prev, recaptcha: 'reCAPTCHA expired. Please verify again.' }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message should be at least 10 characters long';
-    }
-
-    if (!captchaToken) {
-      newErrors.recaptcha = 'Please complete the reCAPTCHA verification';
-    }
-
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Please enter a valid email address';
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    else if (formData.message.trim().length < 10) newErrors.message = 'Message should be at least 10 characters long';
+    if (!captchaToken) newErrors.recaptcha = 'Please complete the reCAPTCHA verification';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
-      // Prepare form data with reCAPTCHA token
-      const submissionData = {
-        ...formData,
-        'g-recaptcha-response': captchaToken,
-        timestamp: new Date().toISOString()
-      };
-
+      const submissionData = { ...formData, 'g-recaptcha-response': captchaToken, timestamp: new Date().toISOString() };
       console.log('Form submission data:', submissionData);
 
-      // TODO: Replace with your actual form submission endpoint
-      // Example backend integration:
-      /*
-      const response = await fetch('/api/contact', {
+      const response = await fetch(URL_API_V1_TESTEMAIL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        // Success handling
-        alert('Message sent successfully! I\'ll get back to you soon.');
-        // Reset form
+        showToast('success', data.message || "Message sent successfully! I'll get back to you soon.", 'Success');
         setFormData({ name: '', email: '', message: '' });
         setCaptchaToken(null);
-        // Reset reCAPTCHA
-        if (window.grecaptcha) {
-          window.grecaptcha.reset();
-        }
+        if (window.grecaptcha) window.grecaptcha.reset();
       } else {
-        throw new Error('Failed to send message');
+        showToast('error', data.message || 'Failed to send message', 'Error');
       }
-      */
-
-      // Simulate API call for demo purposes
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Success handling
-      alert('Message sent successfully! I\'ll get back to you soon.');
-      
-      // Reset form
-      setFormData({ name: '', email: '', message: '' });
-      setCaptchaToken(null);
-      
-      // Reset reCAPTCHA
-      if (window.grecaptcha) {
-        window.grecaptcha.reset();
-      }
-
     } catch (error) {
       console.error('Form submission error:', error);
-      setErrors(prev => ({ 
-        ...prev, 
-        submit: 'Failed to send message. Please try again or contact me directly at soojidano@gmail.com.' 
-      }));
+      showToast('error', 'Failed to send message. Please try again or contact me directly at soojidano@gmail.com.', 'Error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleTestEmail = async () => {
+    try {
+      const response = await fetch(URL_API_V1_TESTEMAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender: 'me@example.com', subject: 'Hello from frontend', body: 'This is a test email sent via POST from frontend' }),
+      });
+
+      const data = await response.json();
+      showToast(response.ok ? 'success' : 'error', data.message || (response.ok ? 'Email sent!' : 'Failed to send email'), response.ok ? 'Success' : 'Error');
+    } catch (error) {
+      console.error('Error sending test email:', error);
+      showToast('error', 'Failed to send test email. Check console for details.', 'Error');
+    }
+  };
+  
   return (
     <section id="contact" className="py-20 px-6 bg-white/[0.02]">
       <div className="container mx-auto max-w-4xl">
@@ -220,7 +179,9 @@ const Contact = () => {
           </div>
           
           {/* Contact Form */}
+          {/* <form onSubmit={handleTestEmail} className="space-y-6"> */}
           <form onSubmit={handleFormSubmit} className="space-y-6">
+            
             {/* Name Field */}
             <div>
               <Label htmlFor="name" className="text-white mb-2 block">
