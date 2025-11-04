@@ -339,8 +339,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact_me"></section>
+      {/* Contact Section */} 
       <Contact />
 
       {/* Footer */}
