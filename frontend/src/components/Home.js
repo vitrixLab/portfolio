@@ -347,9 +347,8 @@ const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-white/60 mb-4 md:mb-0">
-              © 2025 {personalInfo.name}. All rights reserved.
-            </div>
-            
+              © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+            </div>  
             <div className="flex space-x-6">
               <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer">
                 <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
