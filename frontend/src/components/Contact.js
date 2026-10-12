@@ -130,8 +130,8 @@ const Contact = () => {
           <div>
             <div className="body__logo flex items-center gap-0 mb-6">
               <img 
-                loading="lazy" 
-                src={require("../soojidano logo.jpg")} 
+                loading="lazy"
+                src={require("../images/soojidano-logo-hero-3.jpg")}
                 alt="SooJi Dano Logo"
                 className="h-64 w-auto"
               />
