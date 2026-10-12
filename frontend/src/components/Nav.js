@@ -115,7 +115,7 @@ const Nav = ({ scrollToSection }) => {
     <header className="header">
       <div className="header__wrapper">
         <a href="#" className="header__logo">
-          <img loading="lazy" src="https://i.postimg.cc/DZDyvYw8/soojidano-nav-logo-white.png" alt="Logo" />
+          <img loading="lazy" src={require("../nav logo.png")} alt="Logo" />
         </a>
 
         <div className="header__navigation-wrapper">
@@ -207,7 +207,7 @@ const Nav = ({ scrollToSection }) => {
                                 >
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-1.png"
+                                    src={require("../images/soojidano p1-1.png")}
                                     alt="ERP Cloud Migration - Cost Savings"
                                   />
                                 </a>  
@@ -227,7 +227,7 @@ const Nav = ({ scrollToSection }) => {
                                 >
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-2.png"
+                                    src={require("../images/soojidano p1-2.png")}
                                     alt="ERP Cloud Migration - System Boost"
                                   />
                                 </a>
@@ -247,7 +247,7 @@ const Nav = ({ scrollToSection }) => {
                                 >
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p1-3.png"
+                                    src={require("../images/soojidano p1-3.png")}
                                     alt="ERP Cloud Migration - Cloud Transform"
                                   />
                                 </a>
@@ -303,7 +303,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-1.png"
+                                    src={require("../images/soojidano p2-1.png")}
                                     alt="Ultra-Low Latency APIs"
                                   />
                                 </div>
@@ -319,7 +319,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-2.jpg"
+                                    src={require("../images/soojidano p2-2.jpg")}
                                     alt="Seamless LLM Integration"
                                   />
                                 </div>
@@ -335,7 +335,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/soojidano%20p2-3.jpg"
+                                    src={require("../images/soojidano p2-3.jpg")}
                                     alt="Scalable Cloud Architecture"
                                   />
                                 </div>
