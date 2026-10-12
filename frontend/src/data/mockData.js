@@ -7,6 +7,7 @@ export const techStackURL = {
   "Azure" : "https://github.com/vitrixLab/Azure",
   "Terraform" : "https://github.com/vitrixLab/Azure-Terraform",
   "NodeJS" : "https://github.com/vitrixLab/Node.js",
+  "Node.js" : "https://github.com/vitrixLab/Node.js",
   "Python" : "https://github.com/vitrixLab/cpython", 
   "LLM" : "https://github.com/vitrixLab/MCP-Server-LLM",
   "PostgreSQL" : "https://github.com/vitrixLab/Supabase-PostgreSQL",
