@@ -350,20 +350,14 @@ const Home = () => {
               © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
             </div>  
             <div className="flex space-x-6">
-              <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer">
-                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                  <Github className="h-5 w-5" />
-                </button>
+              <a href="https://github.com/vitrixLab" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="text-white/60 hover:text-[#00FFD1] transition-colors">
+                <Github className="h-5 w-5" aria-hidden="true" />
               </a>
-              <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer">
-                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                  <Linkedin className="h-5 w-5" />
-                </button>
+              <a href="https://linkedin.com/in/jasondano" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" className="text-white/60 hover:text-[#00FFD1] transition-colors">
+                <Linkedin className="h-5 w-5" aria-hidden="true" />
               </a>
-              <a href="mailto:soojidano@gmail.com" target="_blank" rel="noopener noreferrer">
-                <button className="text-white/60 hover:text-[#00FFD1] transition-colors duration-300">
-                  <Mail className="h-5 w-5" />
-                </button>
+              <a href="mailto:soojidano@gmail.com" aria-label="Email SooJi Dano" className="text-white/60 hover:text-[#00FFD1] transition-colors">
+                <Mail className="h-5 w-5" aria-hidden="true" />
               </a>
             </div>
           </div>
