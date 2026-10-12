@@ -9,6 +9,14 @@
   ],
   "routes": [
     {
+      "src": "/sitemap.xml",
+      "dest": "/frontend/build/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/frontend/build/robots.txt"
+    },
+    {
       "src": "/(.*)",
       "dest": "/frontend/build/index.html"
     }
