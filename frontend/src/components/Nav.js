@@ -391,7 +391,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p3-1.png"
+                                    src={require("../images/projects/soojidano p3-1.png")}
                                     alt="CI/CD Pipeline"
                                   />
                                 </div>
@@ -407,7 +407,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p3-2.png"
+                                    src={require("../images/projects/soojidano p3-2.png")}
                                     alt="Hybrid Cloud"
                                   />
                                 </div>
@@ -423,7 +423,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p3-3.png"
+                                    src={require("../images/projects/soojidano p3-3.png")}
                                     alt="Monitoring & Metrics"
                                   />
                                 </div>
@@ -479,7 +479,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p4-1.png"
+                                    src={require("../images/projects/soojidano p4-1.png")}
                                     alt="Real-Time Dashboards"
                                   />
                                 </div>
@@ -495,7 +495,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p4-2.png"
+                                    src={require("../images/projects/soojidano p4-2.png")}
                                     alt="Advanced Analytics"
                                   />
                                 </div>
@@ -511,7 +511,7 @@ const Nav = ({ scrollToSection }) => {
                                 <div className="submenu-content__link-img">
                                   <img
                                     loading="lazy"
-                                    src="https://raw.githubusercontent.com/vitrixLab/portfolio/refs/heads/main/frontend/src/images/projects/soojidano%20p4-3.png"
+                                    src={require("../images/projects/soojidano p4-3.png")}
                                     alt="Custom Reports"
                                   />
                                 </div>
