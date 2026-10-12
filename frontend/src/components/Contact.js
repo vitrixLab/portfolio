@@ -131,7 +131,7 @@ const Contact = () => {
             <div className="body__logo flex items-center gap-0 mb-6">
               <img 
                 loading="lazy" 
-                src="https://i.postimg.cc/TYxBnr17/soojidano-logo-hero-3.jpg" 
+                src={require("../soojidano logo.jpg")} 
                 alt="SooJi Dano Logo"
                 className="h-64 w-auto"
               />
