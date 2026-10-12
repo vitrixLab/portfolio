@@ -1,0 +1,18 @@
+# VitrixLab Portfolio
+
+Professional portfolio for SooJi Dano, focused on cloud architecture, software development, enterprise integration, and AI-driven solutions.
+
+## Website
+
+- [Portfolio homepage](https://vitrixlab.com/)
+- [GitHub profile](https://github.com/vitrixLab)
+- [LinkedIn profile](https://linkedin.com/in/jasondano)
+- [Contact by email](mailto:soojidano@gmail.com)
+
+## Topics
+
+- Cloud architecture and multi-cloud infrastructure
+- Kubernetes, Docker, and DevOps automation
+- Enterprise integration and SAP systems
+- AI/LLM integration and software engineering
+- Business process automation
