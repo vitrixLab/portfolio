@@ -133,7 +133,7 @@ const Contact = () => {
                 loading="lazy"
                 src={require("../images/soojidano-logo-hero-3.jpg")}
                 alt="SooJi Dano Logo"
-                className="h-64 w-auto"
+                className="h-32 sm:h-36 md:h-40 w-auto max-w-full object-contain object-left"
               />
             </div>
             <h3 className="text-xl font-semibold mb-6 text-[#00FFD1]">Let's Connect</h3>
